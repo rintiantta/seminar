@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        * { font-family: Helvetica; }
+    </style>
+    <script id="template" type="text/html">
+        <div>
+            <h3>name</h3>
+            <p>status</p>
+        </div>
+    </script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 변수를 선언합니다.
+            var currentTime = new Date().getTime();
+
+            // Ajax 요청을 수행합니다.
+            $.getJSON('/posts', {
+                time: currentTime
+            }, function (data) {
+                // 변수를 선언합니다.
+                var template = $('#template').html();
+
+                // 화면에 출력합니다.
+                $.each(data, function (index, item) {
+                    // 변수를 선언합니다.
+                    var name = item.authorName;
+                    var status = item.status;
+
+                    // 출력합니다.
+                    var output = template.replace('name', name).replace('status', status);
+                    $('#contents').append(output);
+
+                    // 시간을 변경합니다.
+                    currentTime = item.regdate;
+                });
+            });
+
+            // 입력 양식 이벤트를 연결합니다.
+            $('form').one('submit', onsubmit);
+            function onsubmit(event) {
+                // Ajax 요청을 수행합니다.
+                $.post('/posts', {
+                    status: $('textarea').val()
+                }, function (data) {
+                    // 화면 내용 초기화
+                    $('textarea').val('');
+
+                    // 이벤트 재연결
+                    $('form').one('submit', onsubmit);
+                });
+
+                // 기본 이벤트를 제거합니다.
+                event.preventDefault();
+            }
+
+            // 무한 스크롤 이벤트를 연결합니다.
+            $(window).on('scroll', onscroll);
+            function onscroll() {
+                if ($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
+                    // 변수를 선언합니다.
+                    var oldTime = currentTime;
+
+                    // Ajax 요청을 수행합니다.
+                    $.getJSON('/posts', {
+                        time: currentTime
+                    }, function (data) {
+                        // 변수를 선언합니다.
+                        var template = $('#template').html();
+
+                        // 화면에 출력합니다.
+                        $.each(data, function (index, item) {
+                            // 변수를 선언합니다.
+                            var name = item.authorName;
+                            var status = item.status;
+
+                            // 출력합니다.
+                            var output = template.replace('name', name).replace('status', status);
+                            $('#contents').append(output);
+
+                            // 시간을 변경합니다.
+                            currentTime = item.regdate;
+                        });
+                        
+                        // 이벤트 재연결
+                        console.log(oldTime, currentTime)
+                        if (oldTime != currentTime) {
+                            $(window).on('scroll', onscroll);
+                        }
+                    });
+                    $(window).off('scroll', onscroll);
+                }
+            };
+            
+            // 소켓 연결을 수행합니다.
+            var socket = io.connect();
+            socket.on('message', function (message) {
+                // 변수를 선언합니다.
+                var template = $('#template').html();
+                var name = message.data.authorName;
+                var status = message.data.status;
+
+                // 출력합니다.
+                var output = template.replace('name', name).replace('status', status);
+                $('#contents').prepend(output);
+            });
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <textarea></textarea>
+        <input type="submit" />
+    </form>
+    <hr />
+    <div id="contents">
+    </div>
+</body>
+</html>
