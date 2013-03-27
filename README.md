@@ -7,6 +7,7 @@
 #### redis
 + Redis 데이터베이스 - [http://redis.io/](http://redis.io/)
 + Redis 데이터베이스 윈도 버전 - [https://github.com/MSOpenTech/redis](https://github.com/MSOpenTech/redis)
++ Redis 데이터베이스 윈도 다운 - [https://github.com/dmajkic/redis/downloads](https://github.com/dmajkic/redis/downloads)
 + Node.js redis 모듈 - [https://github.com/mranney/node_redis](https://github.com/mranney/node_redis)
 
 #### MongoDB
