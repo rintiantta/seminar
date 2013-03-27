@@ -18,6 +18,17 @@
 + Putty - [http://www.chiark.greenend.org.uk/~sgtatham/putty/](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 + FileZilla - [http://filezilla-project.org/](http://filezilla-project.org/)
 
+#### Cookie Parser
+
+```javascript
+// 기본 함수를 추출합니다.
+var parse = require('express/node_modules/cookie').parse;
+var parseSigned = require('express/node_modules/connect/lib/utils').parseSignedCookies;
+var parseCookie = function (cookie) {
+    return parseSigned(parse(cookie), 'your secret here')
+};
+```
+
 #### 기본 인증
 
 ```javascript
