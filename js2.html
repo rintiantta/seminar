@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script>
+        /*
+        var a; // 변수를 선언 -> 생성
+        a = 10; // 변수에 값을 할당한다 -> 넣는다.박는다
+
+        var a = 10; // 변수를 선언 및 할당한다.
+
+        var b = 10; // 변수를 선언 및 처음 할당 => 처음할당 == 초기화
+        alert(b);
+        */
+        // ㅁ노ㅑㅐㅇ몬ㅇ먼아ㅓㅏㅣㅁㄴ
+        /*
+        alert(typeof 52.273); // 숫자
+        alert(typeof 'string'); // 문자열
+        alert(typeof true); // 참과 거짓: 불리언
+        alert(typeof function () { }); // 함수
+        alert(typeof {}); // 객체
+
+        var nothing;
+        alert(typeof nothing); // undefined 정의되지 않은
+        */
+        /* 숫자 연산자
+        alert(52 + 273);
+        alert(52 - 273);
+        alert(52 * 273);
+        alert(52 / 273);
+        alert(52 % 273);
+        */
+        /* 문자열 연산자
+        alert('안녕하세요.' + '데굴데굴' + '뿌잉뿌잉');
+        */
+        /* 비교 연산자
+        alert(32 == 52); // 양쪽이 같다.
+        alert(32 != 52); // 양쪽이 같지 않다.
+        alert(32 > 52); // 왼쪽이 더 크다.
+        alert(32 >= 52); // 왼쪽이 더 크거나 같다.
+        alert(32 < 52); // 오른쪽이 크다.
+        alert(32 <= 52); // 오른쪽이 더 크거나 같다.
+        */
+        /* 문자열 비교
+        alert('안녕' == '안녕');
+        alert('안녕' != '안녕');
+        alert('가방' > '하마'); // 가방이 앞에 있다 'ㅁ'
+        alert('가방' >= '하마');
+        alert('가방' < '하마');
+        alert('가방' <= '하마');
+        */
+        /* 불리언 비교
+        alert(true == false);
+        alert(true != false);
+        alert(true > false);
+        alert(true >= false);
+        alert(true < false);
+        alert(true <= false);
+        */
+        /* 불리언끼리 연산자
+        alert(true && true);
+        alert(true && false);
+        alert(false && true);
+        alert(false && false);
+        alert(true || true);
+        alert(true || false);
+        alert(false || true);
+        alert(false || false);
+        */
+        /* 단항 연산자 
+        alert(-110); // 음수로 'ㅁ'
+        alert(typeof 110); // 자료형 'ㅁ'
+        alert(!true); // => 반대의 의미 'ㅁ'
+        */
+        /* 부정 부정 연산자
+        alert(!!true); // 'ㅁ' => true
+        alert(!1); // 'ㅁ' => false
+        alert(!!1); // 'ㅁ' => true
+        alert(!!0); // false 
+        alert(!!'가나다') // true
+        alert(!!'') // false
+        // 0, '', false, undefined, null
+        */
+        /* 짧은 조건문
+        false && alert(false) // 무시
+        true && alert(true) // 출력
+
+        false || alert(false) // 출력
+        true || alert(true) // 무시
+        */
+        /* 자료형 변환
+        // Number(값) => 숫자
+        // String(값) => 문자열
+        // Boolean(값) => 불리언
+        alert(10 + Number('10'));
+        alert(10 - '10');
+        alert(10 / '10');
+        alert(10 * '10');
+        */
+        /* 조건문
+        if (조건) {
+            // 조건이 참일 때 실행할 코드
+        }
+
+        if (조건) {
+            // 조건이 참일 때 실행할 코드
+        } else {
+            // 조건이 거짓일 때 실행할 코드
+        }
+
+        if (조건1) {
+            // 조건1이 참일 때 실행할 코드
+        } else if (조건2) {
+            // 조건1이 거짓이고
+            // 조건2가 참일 때 실행할 코드
+        } else {
+            // 조건1과 조건2가 거짓일 때 실행할 코드
+        }
+        */
+        /*
+        while (true) {
+            var input = prompt('A', 'B');
+            if (input) {
+                alert(input);
+                break;
+            } else {
+                alert('값을 입력해주세요 "ㅁ"');
+            }
+        }
+        */
+        /* 배열
+        var array = ['가', '나', '다', '라'];
+        for (var i = 0; i < array.length; i++) {
+            alert(array[i]);
+        }
+        */
+        /* 별로 산만들기 'ㅁ'
+        var output = '';
+        for (var i = 0; i < 5; i++) {
+            for (var j = 0; j < (i + 1); j++) {
+                output += '*';
+            }
+            output += '\n';
+        }
+        alert(output);
+        */
+        /*
+        // 함수 'ㅁ'
+        var f = function (x) {
+            alert(x + 1);
+        };
+        var h = function (x, y, z) {
+            alert('A');
+            return;
+            alert('B');
+        };
+        var output = h(1, 2, 3);
+        alert(output);
+        */
+        var callTenTimes = function (x) {
+            for (var i = 0; i < 10; i++) {
+                x();
+            }
+        };
+        callTenTimes(function () {
+            alert('Function Call');
+        })
+        // 콜백함수: 개발자가 호출한 것이 아니라
+        // 프로그램 코드가 어디선가 호출하는 것 'ㅁ'
+        $(document).ready(function () {
+
+        });
+
+        // 고등학교 'ㅁ' : y = x + 1
+        // f(x) = x + 1 => 함수
+        // f(매개 변수) => 리턴 값
+        // f(1) = 2
+        // f(2) = 3
+        // f(3) = 4
+    </script>
+</head>
+<body>
+</body>
+</html>
