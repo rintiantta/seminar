@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        var ri = function () {
+            return Math.floor(Math.random() * 255);
+        }
+        function createStar(x, y, vx, vy) {
+            return {
+                body: document.createElement('h1'),
+                init: function () {
+                    this.body.style.position = 'absolute';
+                    this.body.style.left = '0px';
+                    this.body.style.top = '0px';
+                    this.body.innerHTML = "●";
+                    //this.body.style.color = 'rgb(' + ri() + ',' + ri() + ',' + ri() + ')'
+                    document.body.appendChild(this.body);
+                },
+                update: function () {
+                    this.vx = this.vx + this.ax;
+                    this.vy = this.vy + this.ay;
+                    this.x = this.x + this.vx;
+                    this.y = this.y + this.vy;
+                    this.body.style.left = this.x + 'px';
+                    this.body.style.top = this.y + 'px';
+                    if (this.x < 0 || window.innerWidth < this.x) {
+                        this.vx = this.vx * -1;
+                    }
+                    if (this.y < 0 || window.innerHeight - 40 < this.y) {
+                        this.vy = this.vy * -1;
+                    }
+                },
+                x: x,
+                y: y,
+                vx: vx,
+                vy: vy,
+                ax: 0,
+                ay: 1
+            };
+        }
+
+        var stars = [];
+        for (var i = 0; i < 50; i++) {
+            var x = Math.random() * window.innerWidth;
+            var y = Math.random() * window.innerHeight;
+            var vx = Math.random() * 10 - 5;
+            var vy = Math.random() * 10 - 5;
+            var star = createStar(x, y, vx, vy);
+            star.init()
+            stars.push(star);
+        }
+        setInterval(function () {
+            for (var i = 0; i < stars.length; i++) {
+                stars[i].update();
+            }
+        }, 1000 / 60);
+    </script>
+</body>
+</html>
