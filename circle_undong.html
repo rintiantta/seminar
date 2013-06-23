@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        var ri = function () {
+            return Math.floor(Math.random() * 255);
+        }
+        function createStar(x, y, vx, vy) {
+            return {
+                body: document.createElement('h1'),
+                init: function () {
+                    this.body.style.position = 'absolute';
+                    this.body.style.left = '0px';
+                    this.body.style.top = '0px';
+                    this.body.innerHTML = "●";
+                    this.body.style.fontSize = Math.floor(Math.random() * 30) + 5 + 'px';
+                    this.body.style.color = 'rgb(' + ri() + ',' + ri() + ',' + ri() + ')'
+                    document.body.appendChild(this.body);
+                },
+                update: function () {
+                    this.x = 500 + this.r * Math.cos(this.angle);
+                    this.y = 500 + this.r * Math.sin(this.angle);
+
+                    this.body.style.left = this.x + 'px';
+                    this.body.style.top = this.y + 'px';
+
+                    this.angle += this.vangle;
+                },
+                x: 0,
+                y: 0,
+                r: Math.random() * 500,
+                angle: Math.random() * 360,
+                vangle: (Math.random() * 10 - 0.5) / 180
+            };
+        }
+
+        var stars = [];
+        for (var i = 0; i < 100; i++) {
+            var x = Math.random() * window.innerWidth;
+            var y = Math.random() * window.innerHeight;
+            var vx = Math.random() * 10 - 5;
+            var vy = Math.random() * 10 - 5;
+            var star = createStar(x, y, vx, vy);
+            star.init()
+            stars.push(star);
+        }
+        setInterval(function () {
+            for (var i = 0; i < stars.length; i++) {
+                stars[i].update();
+            }
+        }, 1000 / 60);
+    </script>
+</body>
+</html>
