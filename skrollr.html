@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skrollr Basic</title>
+    <script src="skrollr.min.js"></script>
+    <script>
+        window.onload = function () {
+            skrollr.init();
+        };
+    </script>
+</head>
+<body>
+    <div id="background"
+         style="position:fixed;left:0;top:0;bottom:0;right:0;"
+         data-0="background:rgb(20, 0, 80)"
+         data-500="background:rgb(20, 0, 80)"
+         data-1000="background:rgb(69, 210, 251)"
+         data-1500="background:rgb(20, 0, 40)"
+         data-2000="background:rgb(20, 0, 40)"></div>
+    <div id="sun"
+         style="position:fixed;top:100%;width:100%"
+         data-0="transform:rotateZ(0deg)"
+         data-2000="transform:rotateZ(180deg)">
+        <img src="sun.png" style="width:100px;height:100px;" />
+    </div>
+    <img id="cloud1"
+         style="position:fixed;top:50px;"
+         data-0="left:-200px;"
+         data-2000="left:900px;"
+         src="cloud_1.png" />
+    <img id="cloud2"
+         style="position:fixed;top:120px;"
+         data-0="left:700px;"
+         data-2000="left:1200px ;"
+         src="cloud_2.png" />
+    <img id="cloud3"
+         style="position:fixed;top:200px;"
+         data-0="left:-1200px;"
+         data-2000="left:-200px ;"
+         src="cloud_1.png" />
+    <img id="mountain"
+         style="position:fixed;bottom:0;width:100%;left:0;right:0"
+         src="mountain.png" />
+    <img id="cloud4"
+         style="position:fixed;top:200px;"
+         data-0="left:100px;"
+         data-2000="left:800px ;"
+         src="cloud_3.png" />
+</body>
+</html>
